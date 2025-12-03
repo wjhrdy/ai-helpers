@@ -1,0 +1,22 @@
+{
+  "name": "ai-helpers",
+  "owner": "opendatahub-io",
+  "plugins": [
+    {
+      "commands": [
+        {
+          "argument_hint": "[name]",
+          "description": "Hello world plugin implementation",
+          "name": "echo",
+          "synopsis": "/hello-world:echo [name]"
+        }
+      ],
+      "description": "Hello World Plugin",
+      "has_readme": true,
+      "hooks": [],
+      "name": "hello-world",
+      "skills": [],
+      "version": "1.0.0"
+    }
+  ]
+}
