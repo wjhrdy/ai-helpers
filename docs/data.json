@@ -107,13 +107,6 @@
             "synopsis": "/jira:sprint-summary <sprint-name> [options]",
             "argument_hint": "<sprint-name> [options]",
             "file_path": "claude-plugins/jira/commands/sprint-summary.md"
-          },
-          {
-            "name": "upload-chat-log",
-            "description": "Export and upload the current chat conversation as a markdown file attachment to a JIRA ticket for later review and documentation.",
-            "synopsis": "/jira:upload-chat-log [ticket-key]",
-            "argument_hint": "[ticket-key]",
-            "file_path": "claude-plugins/jira/commands/upload-chat-log.md"
           }
         ],
         "skills": [

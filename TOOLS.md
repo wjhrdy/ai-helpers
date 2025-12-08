@@ -62,7 +62,6 @@ Jira workflow automation and utilities
 
 **Commands:**
 - **`/jira:sprint-summary` `<sprint-name> [options]`** - Generate comprehensive sprint summaries by analyzing JIRA sprint data, including issue breakdown, progress metrics, and team performance insights.
-- **`/jira:upload-chat-log` `[ticket-key]`** - Export and upload the current chat conversation as a markdown file attachment to a JIRA ticket for later review and documentation.
 
 **Skills:**
 - **upload-chat-log** - Export and upload the current chat conversation as a markdown file attachment to a JIRA ticket for later review and documentation.
