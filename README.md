@@ -108,10 +108,10 @@ Make sure your commands and agents follow the conventions for the Sections struc
 
 ### Adding local plugin to session to be able to test
 
-1. Open `claude`
+1. Open `claude` from this repo root
 2. Run `/plugin marketplace add ./`
 3. Run `/plugin` then install the local plugin
-4. Restart `claude` with `ctrl+c` `ctrl+c` and or `/exit` and rerun
+4. Restart `claude` with `ctrl+c` `ctrl+c` or `/exit`, then rerun `claude`
 5. Test plugin and remove local marketplace after done testing which will remove plugin
 6. You can now reinstall from the git marketplace
 
