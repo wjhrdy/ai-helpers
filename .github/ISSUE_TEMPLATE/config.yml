@@ -1,7 +1,7 @@
 blank_issues_enabled: true
 contact_links:
   - name: 📋 Claude Code Plugin Development Guide
-    url: https://code.claude.com/docs/en/plugins-reference.md
+    url: https://code.claude.com/docs/en/plugins-reference
     about: Official Claude Code plugin development documentation
   - name: 🎯 Cursor AI Commands Documentation
     url: https://cursor.com/docs/agent/chat/commands
