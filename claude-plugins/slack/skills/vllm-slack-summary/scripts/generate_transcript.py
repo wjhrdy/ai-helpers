@@ -11,7 +11,7 @@ Prerequisites:
 What this script does:
     1. Exports messages from a Slack channel for the specified time period using slackdump
     2. Converts the JSON export to a readable markdown transcript
-    3. Outputs the transcript with a summary prompt for Claude to process
+    3. Outputs the transcript as transcript.md
 
 Usage:
     python generate_transcript.py [--days N] [--channel CHANNEL_ID] [--output-dir DIR]
