@@ -478,47 +478,12 @@ def main():
     # Step 1: Export Slack messages
     export_slack_messages(channel_id, args.days, str(export_dir))
 
-    # Step 2: Convert to transcript (now calling functions directly)
+    # Step 2: Convert to transcript
     convert_to_transcript(str(export_dir), "vLLM CI SIG", str(transcript_file))
 
-    # Step 3: Read and output transcript for Claude to summarize
-    print(f"\n✅ Transcript generated: {transcript_file}")
-    print(f"📁 Slack export: {export_dir}")
-
-    # Read the transcript
-    try:
-        with open(transcript_file, "r", encoding="utf-8") as f:
-            transcript_content = f.read()
-    except (OSError, UnicodeDecodeError) as e:
-        print(f"❌ Error: Failed to read transcript file '{transcript_file}': {e}")
-        sys.exit(1)
-
-    # Output structured data for Claude Code to process
-    print("\n" + "=" * 60)
-    print("TRANSCRIPT READY - PLEASE SUMMARIZE FOR RHAIIS TEAM")
-    print("=" * 60 + "\n")
-
-    print("CONTEXT:")
-    print("- vLLM is an open-source project for efficient LLM serving")
-    print(
-        "- Red Hat builds and releases a midstream version called RHAIIS (Red Hat AI Inference Server)"
-    )
-    print(
-        "- The CI SIG channel discusses CI/CD infrastructure, test failures, build issues, and release engineering"
-    )
-    print("\nPLEASE PROVIDE A SUMMARY WITH THESE SECTIONS:")
-    print("1. Executive Summary (2-3 sentences)")
-    print("2. Key Issues & Resolutions")
-    print("3. CI/CD Infrastructure Changes")
-    print("4. Test Failures & Flakes")
-    print("5. Upstream Dependencies & Breaking Changes")
-    print("6. Action Items for Red Hat Team")
-    print("7. Notable Contributors & Discussions")
-
-    print("\n" + "=" * 60)
-    print("FULL TRANSCRIPT:")
-    print("=" * 60 + "\n")
-    print(transcript_content)
+    # Step 3: Report locations of generated artifacts
+    print(f"\n✅ Transcript generated at: {transcript_file}")
+    print(f"📁 Raw Slack export at: {export_dir}")
 
 
 if __name__ == "__main__":
