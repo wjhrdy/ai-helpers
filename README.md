@@ -11,8 +11,8 @@ This repository is a collaborative place hosting collections of AI plugins to au
 
 ## Got an Idea?
 
-Have an idea for a new plugin, command, or assistant but not sure how to implement it? We'd love to hear about it!Simply
-file a GitHub issue with your idea in the title and we'll work together to make it happen.
+Have an idea for a new plugin, command, or assistant but not sure how to implement it? We'd love to hear about it!
+Simply file a GitHub issue with your idea in the title and we'll work together to make it happen.
 
 > [!TIP]
 > [Share your idea](https://github.com/opendatahub-io/ai-helpers/issues/new?assignees=&labels=enhancement%2Chelp+wanted%2Cidea&template=07_idea_request.md&title=%5BIdea%5D+)
@@ -56,23 +56,22 @@ the [official Claude Code plugins documentation](https://docs.claude.com/en/docs
    /hello-world:echo Hello from OpenDataHub!
    ```
 
-### Running Claude Code in a container
+### Running Claude Code in a Container
 
-A container is available with Claude Code and all plugins pre-installed.
+A container image is available with Claude Code and all plugins pre-installed:
+`ghcr.io/opendatahub-io/ai-helpers:latest`
 
-You can build it yourself:
+You can also build it yourself by running:
 
 ```bash
 podman build -f images/claude/Containerfile -t ai-helpers .
 ```
 
-or you can use the one built by our CI periodically.
-
 To use Claude Code with Google Cloud's Vertex AI, you need to pass through your gcloud credentials and set the required
 environment variables:
 
 ```bash
-podman run -it \
+podman run -it --rm \
   --pull always \
   --userns=keep-id \
   -e CLAUDE_CODE_USE_VERTEX=1 \
@@ -80,11 +79,14 @@ podman run -it \
   -e ANTHROPIC_VERTEX_PROJECT_ID=your-project-id \
   -e DISABLE_AUTOUPDATER=1 \
   -v ~/.config/gcloud:/home/claude/.config/gcloud:ro,z \
-  -v $(pwd):/workspace:z \
-  -w /workspace \
-  --name claude_code \
+  -v ~/.claude:/home/claude/.claude:z \
+  -v ~/.claude.json:/home/claude/.claude.json:z \
+  -v $(pwd):$(pwd):z \
+  -w $(pwd) \
   ghcr.io/opendatahub-io/ai-helpers:latest
 ```
+
+You can execute Claude Code commands directly without entering an interactive session using the `-p` or `--print` flag.
 
 **Environment Variables:**
 
@@ -98,33 +100,30 @@ podman run -it \
 
 **Volume Mounts:**
 
-- `-v ~/.config/gcloud:/home/claude/.config/gcloud:ro,z` - Passes through your gcloud authentication (read-only with
-  SELinux labeling)
-- `-v $(pwd):/workspace:z` - Mounts your current directory into the container
+- `-v ~/.claude:/home/claude/.claude:z` - Mounts your local Claude sessions and project data
+- `-v ~/.claude.json:/home/claude/.claude.json:z` - Mounts your user configuration (onboarding state, preferences)
+- `-v $(pwd):$(pwd):z` - Mounts the project at the same absolute path as on the host to reuse Claude's session data
+- `-w $(pwd)` - Sets the working directory to match the host path
 
-### Running Commands Non-Interactively
-
-You can execute Claude Code commands directly without entering an interactive session using the `-p` or `--print` flag:
+Add this to your `~/.bashrc` for easy launching of the container:
 
 ```bash
-podman run -it \
-  --pull always \
-  --userns=keep-id \
-  -e CLAUDE_CODE_USE_VERTEX=1 \
-  -e CLOUD_ML_REGION=your-ml-region \
-  -e ANTHROPIC_VERTEX_PROJECT_ID=your-project-id \
-  -v ~/.config/gcloud:/home/claude/.config/gcloud:ro,z \
-  -v $(pwd):/workspace:z \
-  -w /workspace \
-  --name claude_code \
-  ghcr.io/opendatahub-io/ai-helpers:latest \
-  --print "/hello-world:echo Hello from Claude Code!"
+claude-container() {
+  podman run -it --rm \
+    --pull always \
+    --userns=keep-id \
+    -e CLAUDE_CODE_USE_VERTEX=1 \
+    -e CLOUD_ML_REGION="${CLOUD_ML_REGION}" \
+    -e ANTHROPIC_VERTEX_PROJECT_ID="${ANTHROPIC_VERTEX_PROJECT_ID}" \
+    -e DISABLE_AUTOUPDATER=1 \
+    -v ~/.config/gcloud:/home/claude/.config/gcloud:ro,z \
+    -v ~/.claude:/home/claude/.claude:z \
+    -v ~/.claude.json:/home/claude/.claude.json:z \
+    -v "$(pwd):$(pwd):z" \
+    -w "$(pwd)" \
+    ghcr.io/opendatahub-io/ai-helpers:latest "$@"
+}
 ```
-
-This will:
-1. Start the container with your gcloud credentials
-2. Execute the `/hello-world:echo` command with the provided message
-3. Print the response and exit when complete
 
 ### Plugin Development
 
