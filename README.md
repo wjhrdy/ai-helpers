@@ -69,7 +69,7 @@ environment variables:
 
 ```bash
 podman run -it --rm \
-  --pull always \
+  --pull newer \
   --userns=keep-id \
   -e CLAUDE_CODE_USE_VERTEX=1 \
   -e CLOUD_ML_REGION=your-ml-region \
@@ -107,7 +107,7 @@ Add this to your `~/.bashrc` for easy launching of the container:
 ```bash
 claude-container() {
   podman run -it --rm \
-    --pull always \
+    --pull newer \
     --userns=keep-id \
     -e CLAUDE_CODE_USE_VERTEX=1 \
     -e CLOUD_ML_REGION="${CLOUD_ML_REGION}" \
