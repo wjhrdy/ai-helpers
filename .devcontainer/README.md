@@ -14,7 +14,7 @@ This follows the standard dev container workflow. See [Development Containers](h
 
 2. **Claude Configuration**  
     This dev container assumes your certs for Claude are managed by Vertex AI via GCP. 
-    Please make you have set up the files on your host, and they will be mounted automatically. If you have used claude on your current host before, proceed to the next step.
+    Please make sure you have set up the files on your host; they will be mounted automatically. If you have used claude on your current host before, proceed to the next step.
 
     Verify certs are present on host.
 
@@ -22,10 +22,10 @@ This follows the standard dev container workflow. See [Development Containers](h
     ls /home/.config/gcloud
     ```
     Should return something like this:
-    ```
+    ```text
     access_tokens.db  application_default_credentials.json  configurations  default_configs.db  legacy_credentials
     active_config     config_sentinel                       credentials.db  gce                 logs
-   ````
+    ```
 
     If it does not, there are two possibilities:
 
@@ -34,7 +34,7 @@ This follows the standard dev container workflow. See [Development Containers](h
 
     ii. **You have used Claude Code before, but not on this node**
     - Transfer your certificates to the new host using:
-        ```
+        ```text
         ai-helpers/scripts/scp_cred.sh
         ```
         
