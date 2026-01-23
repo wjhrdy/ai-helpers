@@ -42,6 +42,11 @@ Conversational AI assistants created within Google's Gemini platform. Each Gem i
 - **Agents**: Available as sub-agents through marketplace plugin entries
 
 
+### OpenCode.ai
+- **Skills**: Compatible as OpenCode skills in ~/.config/opencode/skills/
+- **Commands**: Compatible as OpenCode commands in ~/.config/opencode/commands/
+- **Agents**: Not currently compatible due to format differences
+
 ### Cursor AI
 - **Skills**: Compatible through agentskills.io format
 - **Commands**: Can be adapted for Cursor command structure

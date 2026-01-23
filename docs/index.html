@@ -1034,8 +1034,6 @@
             <div class="navbar-links">
                 <a href="#install" class="nav-link primary">How to Install</a>
                 <a href="https://github.com/opendatahub-io/ai-helpers" class="nav-link" target="_blank" rel="noopener noreferrer">AI Helpers</a>
-                <a href="https://docs.claude.com/en/docs/claude-code/overview" class="nav-link" target="_blank" rel="noopener noreferrer">Claude Code Docs</a>
-                <a href="https://cursor.com/docs" class="nav-link" target="_blank" rel="noopener noreferrer">Cursor Docs</a>
             </div>
         </div>
     </div>
@@ -1397,7 +1395,7 @@
                         `}
                     </div>
 
-                    <div>
+                    <div style="margin-bottom: 1rem;">
                         <div style="font-weight: 600; margin-bottom: 0.5rem;">Cursor</div>
                         ${tool.tool_type === 'skills' ? `
                         <div style="font-size: 0.875rem; color: var(--text-secondary);">
@@ -1410,6 +1408,21 @@
                         ` : `
                         <div style="font-size: 0.875rem; color: var(--text-secondary);">
                             See <a href="https://cursor.com/docs/context/subagents" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">Cursor Sub-agents documentation</a>
+                        </div>
+                        `}
+                    </div>
+
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 0.5rem;">OpenCode.ai</div>
+                        ${tool.tool_type === 'skills' ? `
+                        <div style="font-size: 0.875rem; color: var(--text-secondary);">Install as skills in ~/.config/opencode/skills/</div>
+                        ` : tool.tool_type === 'commands' ? `
+                        <div style="font-size: 0.875rem; color: var(--text-secondary);">Install as commands in ~/.config/opencode/commands/</div>
+                        ` : tool.tool_type === 'agents' ? `
+                        <div style="font-size: 0.875rem; color: var(--text-secondary);">⚠️ Not currently compatible with OpenCode.ai</div>
+                        ` : `
+                        <div style="font-size: 0.875rem; color: var(--text-secondary);">
+                            See <a href="https://opencode.ai/docs" target="_blank" rel="noopener noreferrer" style="color: #FF6B35;">OpenCode.ai documentation</a>
                         </div>
                         `}
                     </div>
@@ -1747,7 +1760,8 @@
         function showInstallModal() {
             const content = `
                 <h3 style="margin-bottom: 1rem; color: #8A2BE2; display: flex; align-items: center; gap: 0.5rem;">
-                    <span style="background: #8A2BE2; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">Claude Code Installation</span>
+                    <span style="background: #8A2BE2; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">Claude Code</span>
+                    <a href="https://docs.claude.com/en/docs/claude-code/overview" target="_blank" rel="noopener noreferrer" style="color: #8A2BE2; font-size: 0.875rem; text-decoration: none;">📖 Docs</a>
                 </h3>
 
                 <p style="margin-bottom: 1rem; color: var(--text-secondary);">
@@ -1777,7 +1791,8 @@
                 <hr style="border: none; border-top: 1px solid var(--border); margin: 2rem 0;">
 
                 <h3 style="margin-bottom: 1rem; color: #4A90E2; display: flex; align-items: center; gap: 0.5rem;">
-                    <span style="background: #4A90E2; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">Cursor Installation</span>
+                    <span style="background: #4A90E2; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">Cursor</span>
+                    <a href="https://cursor.com/docs" target="_blank" rel="noopener noreferrer" style="color: #4A90E2; font-size: 0.875rem; text-decoration: none;">📖 Docs</a>
                 </h3>
 
                 <p style="margin-bottom: 1rem; color: var(--text-secondary);">
@@ -1818,28 +1833,67 @@
                     </button>
                 </div>
 
+                <hr style="border: none; border-top: 1px solid var(--border); margin: 2rem 0;">
+
+                <h3 style="margin-bottom: 1rem; color: #FF6B35; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="background: #FF6B35; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">OpenCode.ai</span>
+                    <a href="https://opencode.ai/docs" target="_blank" rel="noopener noreferrer" style="color: #FF6B35; font-size: 0.875rem; text-decoration: none;">📖 Docs</a>
+                </h3>
+
+                <p style="margin-bottom: 1rem; color: var(--text-secondary);">
+                    Clone the AI helpers repository:
+                </p>
+
+                <div style="position: relative; margin-bottom: 1.5rem;">
+                    <div class="code-block" style="padding-right: 5rem;">git clone https://github.com/opendatahub-io/ai-helpers.git && cd ai-helpers</div>
+                    <button class="copy-button" onclick="copyToClipboard('git clone https://github.com/opendatahub-io/ai-helpers.git && cd ai-helpers', event)" title="Copy to clipboard">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.75 4.75H10.25V1.75H5.75V4.75ZM5.75 4.75H2.75V14.25H10.25V11.25M5.75 4.75V7.75H13.25V14.25H10.25V11.25M10.25 11.25H13.25V7.75H5.75V4.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="copy-button-text">Copy</span>
+                    </button>
+                </div>
+
+                <p style="margin-bottom: 1rem; color: var(--text-secondary);">
+                    Install globally:
+                </p>
+
+                <div style="position: relative; margin-bottom: 1.5rem;">
+                    <div class="code-block" style="padding-right: 5rem;">mkdir -p ~/.config/opencode/skills ~/.config/opencode/commands</div>
+                    <button class="copy-button" onclick="copyToClipboard('mkdir -p ~/.config/opencode/skills ~/.config/opencode/commands', event)" title="Copy to clipboard">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.75 4.75H10.25V1.75H5.75V4.75ZM5.75 4.75H2.75V14.25H10.25V11.25M5.75 4.75V7.75H13.25V14.25H10.25V11.25M10.25 11.25H13.25V7.75H5.75V4.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="copy-button-text">Copy</span>
+                    </button>
+                </div>
+
+                <div style="position: relative; margin-bottom: 1.5rem;">
+                    <div class="code-block" style="padding-right: 5rem;">ln -sf $(pwd)/helpers/skills/* ~/.config/opencode/skills/ && ln -sf $(pwd)/helpers/commands/* ~/.config/opencode/commands/</div>
+                    <button class="copy-button" onclick="copyToClipboard('ln -sf $(pwd)/helpers/skills/* ~/.config/opencode/skills/ && ln -sf $(pwd)/helpers/commands/* ~/.config/opencode/commands/', event)" title="Copy to clipboard">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.75 4.75H10.25V1.75H5.75V4.75ZM5.75 4.75H2.75V14.25H10.25V11.25M5.75 4.75V7.75H13.25V14.25H10.25V11.25M10.25 11.25H13.25V7.75H5.75V4.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="copy-button-text">Copy</span>
+                    </button>
+                </div>
+
                 <h4 style="margin-bottom: 0.75rem; color: var(--text-primary); font-size: 1rem;">Documentation:</h4>
 
                 <div style="margin-bottom: 1rem;">
                     <p style="margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: 600;">Skills:</p>
                     <p style="margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">
-                        See <a href="https://cursor.com/docs/context/skills" target="_blank" rel="noopener noreferrer" style="color: #4A90E2;">Cursor Skills documentation</a> for advanced configuration.
+                        See <a href="https://opencode.ai/docs/skills/" target="_blank" rel="noopener noreferrer" style="color: #FF6B35;">OpenCode.ai Skills documentation</a> for advanced configuration.
                     </p>
                 </div>
 
                 <div style="margin-bottom: 1rem;">
                     <p style="margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: 600;">Commands:</p>
                     <p style="margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">
-                        See <a href="https://cursor.com/docs/context/commands" target="_blank" rel="noopener noreferrer" style="color: #4A90E2;">Cursor Commands documentation</a> for advanced configuration.
+                        See <a href="https://opencode.ai/docs/commands/" target="_blank" rel="noopener noreferrer" style="color: #FF6B35;">OpenCode.ai Commands documentation</a> for advanced configuration.
                     </p>
                 </div>
 
-                <div style="margin-bottom: 1rem;">
-                    <p style="margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: 600;">Agents:</p>
-                    <p style="margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">
-                        See <a href="https://cursor.com/docs/context/subagents" target="_blank" rel="noopener noreferrer" style="color: #4A90E2;">Cursor Sub-agents documentation</a> for advanced configuration.
-                    </p>
-                </div>
             `;
             showModal('Installation Instructions', content);
             window.location.hash = 'install';

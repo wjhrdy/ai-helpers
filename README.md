@@ -3,7 +3,7 @@
 This repository is a collaborative place hosting collections of AI plugins to automate and assist with various tasks.
 
 > [!NOTE]
-> Right now the focus is to support Claude Code, Gemini Gems, and Cursor AI.
+> Right now the focus is to support Claude Code, OpenCode.ai, Gemini Gems, and Cursor AI.
 > Other tools are welcome here, please submit Pull Requests.
 
 > [!NOTE]
@@ -188,6 +188,29 @@ claude-container() {
     ghcr.io/opendatahub-io/ai-helpers:latest "$@"
 }
 ```
+
+## Using with OpenCode.ai
+
+[OpenCode.ai](https://opencode.ai) is an open-source AI coding assistant that supports custom skills and commands. Our helpers can be integrated as OpenCode skills and commands to enhance your development workflow.
+
+**Note**: OpenCode.ai agents are not currently compatible due to format differences. Only skills and commands are supported at this time.
+
+### Setup
+
+1. **Clone the helpers repository:**
+   ```bash
+   git clone https://github.com/opendatahub-io/ai-helpers.git
+   cd ai-helpers
+   ```
+
+2. **Install globally:**
+   ```bash
+   mkdir -p ~/.config/opencode/skills ~/.config/opencode/commands
+   ln -sf $(pwd)/helpers/skills/* ~/.config/opencode/skills/
+   ln -sf $(pwd)/helpers/commands/* ~/.config/opencode/commands/
+   ```
+
+For detailed information about OpenCode.ai skills and commands, see the [OpenCode.ai documentation](https://opencode.ai/docs).
 
 ## Gemini Gems
 
