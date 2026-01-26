@@ -65,4 +65,9 @@ build: ## Build Claude container image using Containerfile
 .PHONY: container-build
 container-build: build ## Alias for build target
 
+.PHONY: docs
+docs: ## Run docs locally at http://localhost:8000
+	@echo "Starting local documentation server..."
+	@python3 -m http.server 8000 --directory docs
+
 .DEFAULT_GOAL := help
