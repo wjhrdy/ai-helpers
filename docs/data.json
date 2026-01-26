@@ -36,6 +36,13 @@
         "link": "https://gemini.google.com/gem/1P0wg_pwCga6YDVKfd3enWY1CRh2EzuXI?usp=sharing"
       },
       {
+        "name": "red-hat-ai-release-navigator",
+        "description": "Advisor on the Red Hat AI (RHAI) release lifecycle",
+        "category": "general",
+        "file_path": "",
+        "link": "https://gemini.google.com/gem/1BuXxrQY7YZS7TluLX9iF3fezVzPoCwHL?usp=sharing"
+      },
+      {
         "name": "technical-spike-investigation",
         "description": "My purpose is to help an engineer conduct a technical spike for a new feature, library, initiative, or component. Note: gems don't have access to deep research so if you need the Spike to perform some research on the Internet, you'll not want to use this Gem and use regular chat sessions.",
         "category": "general",
