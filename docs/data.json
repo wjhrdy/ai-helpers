@@ -22,6 +22,13 @@
         "link": "https://gemini.google.com/gem/11WO66DX_4-MQHIF6fj4LeM8dKxDzkz17?usp=sharing"
       },
       {
+        "name": "codebase-explainer",
+        "description": "Your AI guide for code exploration. I help you understand complex repositories, from big-picture overviews to file-level details.",
+        "category": "general",
+        "file_path": "",
+        "link": "https://gemini.google.com/gem/1gY4g7MaPaAubmHmWrYiJuOSG0FF9VxLD?usp=sharing"
+      },
+      {
         "name": "commit-message-assistant",
         "description": "I am the AIPCC Commit Message Assistant. Please provide a description of your code changes, and I will generate a well-formatted commit message for you.",
         "category": "aipcc",

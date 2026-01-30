@@ -26,3 +26,7 @@ gems:
   - title: "Red Hat AI Release Navigator"
     description: "Advisor on the Red Hat AI (RHAI) release lifecycle"
     link: "https://gemini.google.com/gem/1BuXxrQY7YZS7TluLX9iF3fezVzPoCwHL?usp=sharing"
+
+  - title: "Codebase Explainer"
+    description: "Your AI guide for code exploration. I help you understand complex repositories, from big-picture overviews to file-level details."
+    link: "https://gemini.google.com/gem/1gY4g7MaPaAubmHmWrYiJuOSG0FF9VxLD?usp=sharing"
