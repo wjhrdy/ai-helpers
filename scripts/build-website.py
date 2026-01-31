@@ -215,14 +215,18 @@ def get_tool_metadata(tool: Dict, category: str, base_path: Path) -> Dict:
                         frontmatter_content = content[4:end_marker]
                         agent_data = yaml.safe_load(frontmatter_content)
 
-                        metadata.update(
-                            {
-                                "description": agent_data.get("description", ""),
-                                "id": tool["name"],
-                                "tools": agent_data.get("tools", ""),
-                                "model": agent_data.get("model", ""),
-                            }
-                        )
+                        metadata_updates = {
+                            "description": agent_data.get("description", ""),
+                            "id": tool["name"],
+                            "tools": agent_data.get("tools", ""),
+                        }
+
+                        # Only include model if it's not empty
+                        model = agent_data.get("model", "")
+                        if model:
+                            metadata_updates["model"] = model
+
+                        metadata.update(metadata_updates)
             except Exception as e:
                 print(f"Warning: Could not read agent metadata from {agent_file}: {e}")
 
@@ -231,8 +235,6 @@ def get_tool_metadata(tool: Dict, category: str, base_path: Path) -> Dict:
             metadata["id"] = tool["name"]
         if "tools" not in metadata:
             metadata["tools"] = ""
-        if "model" not in metadata:
-            metadata["model"] = ""
 
     elif tool_type == "gem":
         # For gems, get description and link from gems.yaml by matching tool name
