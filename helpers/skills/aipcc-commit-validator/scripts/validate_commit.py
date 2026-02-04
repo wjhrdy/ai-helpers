@@ -96,7 +96,9 @@ def validate_commit(commit_ref: str = "HEAD") -> tuple[bool, list[str]]:
 
     # Rule 2: Must have a body (description)
     if not body:
-        errors.append(f"[{short_sha}] Commit must have a body (description after blank line)")
+        errors.append(
+            f"[{short_sha}] Commit must have a body (description after blank line)"
+        )
 
     # Rule 3: Must have Signed-off-by
     full_message = f"{subject}\n\n{body}"
