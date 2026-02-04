@@ -98,3 +98,4 @@ Signed-off-by: Jane Developer <jane@redhat.com>
 - **`/aipcc:commit-suggest`** – Generate commit message suggestions without committing
 - **`/aipcc:commit-push-pr`** – Create commit, push, and open a PR in one command
 - **`/aipcc:fix-pr-commit`** – Fix non-compliant commits on existing PRs
+- **`aipcc-commit-validator`** skill – Validate commits with the standalone script

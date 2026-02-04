@@ -147,3 +147,4 @@ Infers `INFERENG-5678` from branch name and creates compliant commit.
 - **`/aipcc:commit`** – Create a new compliant commit
 - **`/aipcc:commit-push-pr`** – Full workflow for new PRs
 - **`/aipcc:commit-suggest`** – Generate commit message suggestions
+- **`aipcc-commit-validator`** skill – Validate commits with the standalone script

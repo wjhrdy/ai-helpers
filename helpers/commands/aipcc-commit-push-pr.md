@@ -163,3 +163,4 @@ Uses `glab mr create` for GitLab repos.
 - **`/aipcc:commit`** – Create just the commit without push/PR
 - **`/aipcc:fix-pr-commit`** – Fix commits on existing PRs
 - **`/aipcc:commit-suggest`** – Generate commit message suggestions
+- **`aipcc-commit-validator`** skill – Validate commits with the standalone script
