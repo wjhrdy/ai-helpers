@@ -68,7 +68,7 @@
       {
         "name": "aipcc-commit-validator",
         "description": "Validate git commit messages against AIPCC linter rules used by Red Hat AI projects. Checks for proper JIRA ticket format, commit body, and Signed-off-by line. Use this when validating commits before pushing or when CI fails due to commit message format.",
-        "category": "general",
+        "category": "aipcc",
         "file_path": "helpers/skills/aipcc-commit-validator/SKILL.md",
         "id": "aipcc-commit-validator",
         "allowed_tools": "Bash Read"
@@ -174,7 +174,7 @@
       {
         "name": "aipcc-commit",
         "description": "Create a git commit following AIPCC conventions",
-        "category": "general",
+        "category": "aipcc",
         "file_path": "helpers/commands/aipcc-commit.md",
         "argument_hint": "[JIRA-TICKET]",
         "synopsis": "/aipcc:commit           # Create commit, infer JIRA ticket from branch/changes"
@@ -182,7 +182,7 @@
       {
         "name": "aipcc-commit-push-pr",
         "description": "Commit, push, and open a PR/MR following AIPCC conventions",
-        "category": "general",
+        "category": "aipcc",
         "file_path": "helpers/commands/aipcc-commit-push-pr.md",
         "argument_hint": "[JIRA-TICKET]",
         "synopsis": "/aipcc:commit-push-pr           # Full workflow with inferred JIRA ticket"
@@ -198,7 +198,7 @@
       {
         "name": "aipcc-fix-pr-commit",
         "description": "Fix non-compliant PR commits by squashing and recommitting",
-        "category": "general",
+        "category": "aipcc",
         "file_path": "helpers/commands/aipcc-fix-pr-commit.md",
         "argument_hint": "[JIRA-TICKET]",
         "synopsis": "/aipcc:fix-pr-commit           # Fix commits on current branch"
@@ -206,7 +206,7 @@
       {
         "name": "downstream-release-status",
         "description": "Check RHAIIS downstream release status and suggest next steps",
-        "category": "general",
+        "category": "vllm",
         "file_path": "helpers/commands/downstream-release-status.md",
         "argument_hint": "<version> [accelerator]",
         "synopsis": "/downstream:release-status v0.14.0+rhai3      # Check specific release"
@@ -246,7 +246,7 @@
       {
         "name": "release-vllm-midstream-image",
         "description": "Release a vLLM container image to quay.io/vllm",
-        "category": "general",
+        "category": "vllm",
         "file_path": "helpers/commands/release-vllm-midstream-image.md",
         "argument_hint": "<tag> <device>",
         "synopsis": "/release:vllm-midstream-image v0.14.0+rhai3 cuda  # Release CUDA image"
